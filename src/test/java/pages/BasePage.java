@@ -1,18 +1,20 @@
-package pages;
- 
+package pages; 
+//import java.awt.Desktop.Action;
 // Importaciones necesarias
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
- 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
- 
+
+
+
 import io.github.bonigarcia.wdm.WebDriverManager;
  
 public class BasePage {
@@ -21,6 +23,7 @@ public class BasePage {
      * Esta variable va a ser compartida por todas las instancias de BasePage y sus
      * subclases
      */
+    private static Actions action;
     protected static WebDriver driver;
     /*
      * Declaración de una variable de instancia 'wait' de tipo WebDriverWait.
@@ -101,9 +104,55 @@ public class BasePage {
         for (WebElement option : dropdownOptions) {
             values.add(option.getText());
         }
- 
         return values;
- 
     }
- 
+    public void hoverOverElemnt(String locator){
+        action.moveToElement(Find(locator));
+    }
+    public void dobleClick(String locator){
+        action.doubleClick(Find(locator));
+
+    }
+    public void rigthClick(String locator){
+        action.contextClick(Find(locator));
+    }
+
+    public String getValueFromTable(String locator , int row ,int column ){
+        String cellIned = locator+"/table/tbody/tr["+row+"]/td["+column+"]";
+        return Find(cellIned).getText();
+    }
+
+    public void setValueOntable(String locator,int row,int column , String stringTosend){
+        String celltofill = locator+"/table/tbody/tr/["+row+"]/td["+column+"]";
+        Find(celltofill).sendKeys(stringTosend);
+    }
+    /* 
+  // iframe 
+    public void switchToiFrame(int iFrameIndex){
+        driver.switchTo().frame(iFrameIndex);
+    }
+  // iframe
+    public void switchToParentFrame(){
+        driver.switchTo().parentFrame();
+    }
+    //Stop Alert
+    public void dismissAlert(){
+        driver.switchTo().alert().dismiss();
+    }
+
+        */  
+    public String textFromElemnt(String locator){
+        return Find(locator).getText();
+    }
+    public  boolean elementEnable(String locator){
+      return Find(locator).isEnabled();
+
+    }
+    public boolean elementIsDisplay(String locator){
+        return Find(locator).isDisplayed();
+    }
+    public boolean elementIsSelect(String locator){
+        return Find(locator).isSelected();
+    }
+    
 }

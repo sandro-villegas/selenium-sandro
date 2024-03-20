@@ -2,15 +2,15 @@
 
 package pages;
 
-import org.openqa.selenium.WebDriver;
+
 
 public class PaginaPrincipal extends BasePage {
  
     private String sectionLink = "//a[normalize-space()='%s' and @href]";
     private String elegirUnCursos = "//a[normalize-space()='Cursos' and @href]";
     private String elegirUnPlanButton = "//a[normalize-space()='Elegir Plan' and @href]";
-    private String fundamentosTestingLink = "//h2[normalize-space()='Fundamentos del Testing']";
-    private String fundamentosIntroduccionLink = "//a[normalize-space()='Introducción al Testing de Software' and @href]";
+    //private String fundamentosTestingLink = "//h2[normalize-space()='Fundamentos del Testing']";
+    //private String fundamentosIntroduccionLink = "//a[normalize-space()='Introducción al Testing de Software' and @href]";
     //a[normalize-space()='Elige plan']
     //h2[normalize-space()='Fundamentos del Testing']
     
